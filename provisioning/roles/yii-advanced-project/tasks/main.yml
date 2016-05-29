@@ -1,0 +1,19 @@
+- name: global require
+  shell: composer global require "fxp/composer-asset-plugin"
+  become: yes
+  become_user: vagrant
+  
+- name: global require 2
+  shell: composer global require "fxp/composer-asset-plugin"
+  
+- name: clone InTouch repo
+  shell: composer create-project --stability="dev" lupi-stole-my-code/nzi-project /var/www/project creates=/var/www/project
+
+- name: set Init run permissions
+  file: path=/var/www/project/init mode=0744
+
+- name: init project
+  shell: yes | /var/www/project/init --env=Development
+  
+- name: yii migrate
+  shell: php /var/www/project/yii migrate/up --interactive=0
