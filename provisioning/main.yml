@@ -2,6 +2,7 @@
 - hosts: vagrant
   sudo: true
   vars:
+    - SymfonyProjectName: myproject
     # [OPTIONAL] GitHub OAuth token to extend API rate limit
     # How to generate it: https://github.com/blog/1509-personal-api-tokens
     #- github_oauth_token: "" # Uncommend and add GitHub OAuth Token here!
@@ -19,6 +20,5 @@
     - mysql
     - postgresql
     - phpmyadmin
-    - adminer
     - project-db
-    - yii-advanced-project
+    - symfony-project

@@ -7,6 +7,3 @@
 - name: add GitHub Auth token
   shell: composer config -g github-oauth.github.com {{ github_oauth_token }}
   when: github_oauth_token is defined
-
-- name: install Composer Asset Plugin
-  shell: "composer global require 'fxp/composer-asset-plugin'"

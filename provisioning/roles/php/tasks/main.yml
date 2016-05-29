@@ -1,40 +1,73 @@
 - name: ensure PHP installed
-  apt: pkg={{ item }} state=latest
+  apt: pkg={{ item }} state=installed
   with_items:
-    - php5-fpm
-    - php5-dev
-    - php5-cli
-    - php5-intl
-    - php5-json
-    - php5-pgsql
-    - php5-mysql
-    - php5-sqlite
-    - php5-curl
-    - php5-gd
-    - php5-mcrypt
-    - php5-xdebug
-    - php5-memcached
+    - php7.0-fpm
+    - php7.0-cli
+    - php7.0-common
+    - php7.0-curl
+    - php7.0-json
+    - php7.0-gd
+    - php7.0-mcrypt
+    - php7.0-odbc
+    - php7.0-pgsql
+    - php7.0-mbstring
+    - php7.0-mysql
+    - php7.0-xmlrpc
+    - php7.0-opcache
+    - php7.0-intl
+    - php7.0-bz2
+    - php7.0-xml
+    - php7.0-dev
+    - php-apcu
+    - php7.0-sqlite3
+    - php-xdebug
+    - libmemcached-dev
+    - php-memcached
   tags: php
 
-- name: enable php modules
-  shell: php5enmod {{ item }}
-  with_items:
-    - mcrypt
-  notify:
-    - restart phpfpm
+- name: PHP | FPM php.ini
+  template:
+    src=php.ini.j2
+    dest=/etc/php/7.0/fpm/php.ini
+    backup=yes
+    owner=root
+    group=root
+    mode=0644
+    force=true
+  become: true
+
+- name: PHP | CLI php.ini
+  template:
+    src=php.ini.j2
+    dest=/etc/php/7.0/cli/php.ini
+    backup=yes
+    owner=root
+    group=root
+    mode=0644
+  become: true
+
+- name: PHP | configure opcache
+  template:
+    src=opcache.ini.j2
+    dest=/etc/php/7.0/mods-available/opcache.ini
+    backup=yes
+    owner=root
+    group=root
+    mode=0644
+  become: true
 
 - name: configure PHP settings
-  template: src=php.ini dest=/etc/php5/fpm/conf.d/custom.ini
+  template: src=php.ini dest=/etc/php/7.0/fpm/conf.d/custom.ini
   notify:
     - restart phpfpm
   tags: php
 
 - name: configure PHP-FPM Pool settings
-  template: src=www-pool.conf dest=/etc/php5/fpm/pool.d/www.conf
+  template: src=www-pool.conf dest=/etc/php/7.0/fpm/pool.d/www.conf
   notify:
     - restart phpfpm
   tags: php
 
 - name: chown PHP-FPM sessions dir
-  shell: chown vagrant:vagrant /var/lib/php5 -Rf
+  shell: chown vagrant:vagrant /var/lib/php -Rf
   tags: php

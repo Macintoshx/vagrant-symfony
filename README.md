@@ -1,17 +1,16 @@
-## Try Yii2 with Vagrant VM + Ansible provisioning
+## Latest Symfony with Vagrant VM + Ansible provisioning
 
 ## Out of the box...
 
-* Ubuntu 15.10 64 bit ( + bulk of system soft like `mc`, `curl`, etc.)
-* PHP-FPM 5.6 ( + modules `intl`, `gd`, `xdebug` etc.)
+* Ubuntu 16.04 64 bit ( + bulk of system soft like `mc`, `curl`, etc.)
+* PHP 7.0 ( + modules `intl`, `gd`, `xdebug` etc.)
 * Nginx
-* MySQL 5.6
+* MySQL
 * Composer
 * phpMyAdmin
-* Adminer
 * PostgreSQL
 * Sqlite
-* Memcached ( + php5_memcached)
+* Memcached
 * Local IP loop on Host machine `/etc/hosts` and Virtual hosts in Nginx already set up too !
 
 ## Quick start
@@ -33,11 +32,6 @@ additional Vagrant modules will be installed automatically (vagrant-hostmanager,
 * It will start VM creation and Provisioning. Could take some time 15-30 min... Drink coffee and get back for complete virtual server with Yi2 project ready for play !
 * If you got an error regarding Composer and GitHub API requests limitation during provisioning - go to `/provisioning/main.yml`, uncomment var and add your GitHub oAuth token into `github_oauth_token` variable
 
-### Supported Host OS :
-
-* **Ubuntu-based Linux 14.04+** - tested
-* **Windows 10** - tested
-* **MacOS** - tested
 
 #### Note for Windows OS users
 
@@ -50,60 +44,18 @@ additional Vagrant modules will be installed automatically (vagrant-hostmanager,
 
 Ok, now if everything went fine you can access these Urls in your browser
 
-* [http://yii2.local/](http://yii2.local/)  -  frontend app
-* [http://admin.yii2.local/](http://admin.yii2.local/)  -  backend app
-* [http://phpmyadmin.yii2.local/](http://phpmyadmin.yii2.local/) - phpMyAdmin
-* [http://adminer.yii2.local/](http://adminer.yii2.local/) - Adminer (Lightweight and simple GUI manager for MySQL, PostgreSQL, SQLite, MS SQL, Oracle, SimpleDB, Elasticsearch and MongoDB)
-* [http://media.yii2.local/](http://media.yii2.local) - Special project for shared images, css, js, etc.
+* [http://symfony.dev/](http://symfony.dev/)  -  frontend app
+* [http://pma.symfony.dev/](http://pma.symfony.dev/) - phpMyAdmin
 
-* Gii code generator should be called like this [http://yii2.local/index.php?r=gii](http://yii2.local/index.php?r=gii)
-
-**Note :** These local domains `.local` will be available on your host machine only if `hosts` file was modified correctly. It should 
-be done automatically by `vagrant-hostsmanager` plugin. But if url `http://yii2.local/` or other is not found by your browser - make sure
+**Note :** These local domains `.dev` will be available on your host machine only if `hosts` file was modified correctly. It should 
+be done automatically by `vagrant-hostsmanager` plugin. But if url `http://symfony.dev/` or other is not found by your browser - make sure
 your `hosts` file contain correct assignment of VM IP and local domains:  
 It should have such lines :
 ```
-192.168.33.33 yii2.local
-192.168.33.33 admin.yii2.local
-192.168.33.33 phpmyadmin.yii2.local
-192.168.33.33 adminer.yii2.local
-192.168.33.33 media.yii2.local
+192.168.33.33 symfony.dev
+192.168.33.33 pma.symfony.dev
 ```
 
 > File location. On Linux `/etc/hosts`. On Windows `%SystemRoot%\system32\drivers\etc\hosts`
 
-### Let's make something
-
-* [Go to Gii](http://yii2.local/index.php?r=gii)
-* [Go to Model Generator](http://yii2.local/index.php?r=gii/default/view&id=model)
-
-~~~
-Input there ...  
-Table Name : actor  
-Model Class : Actor  
-Namespace : frontend\models
-
-Press - Preview and then Generate
-~~~
-
-* [Go to CRUD Generator](http://yii2.local/index.php?r=gii/default/view&id=crud)
-
-~~~
-Input there ...  
-Model Class : frontend\models\Actor  
-Search Model Class : frontend\models\ActorSearch  
-Controller Class : frontend\controllers\ActorController
-
-Press - Preview and then Generate
-~~~
-
-* And now your Actor CRUD page is generated. You can access it here [http://yii2.local/index.php?r=actor](http://yii2.local/index.php?r=actor)
-* Continue playing with other Models, modify code (on your host machine in folder `.../try-yii2/yii2-app-advanced`) make relations between Models etc. Whatever you wish!
-
-
-## Getting deeper ...
-
-* In `try-yii2` folder run `vagrant ssh` to access virtual dev server via SSH. You can modify and setup additionally anything you want.
-* Or modify Ansible provisioning YML files (if you are familiar with it) and run `vagrant provision` to update server config (WARNING! I can't guarantee that your changes will not be overwritten!)
-
-### Made by [Evgeniy Kuzminov](http://stdout.in). Thanks for support to [Anton Logvinenko](http://anton.logvinenko.name/). Modified by Macintoshx
+### Made by [Evgeniy Kuzminov](http://stdout.in). Thanks for support to [Anton Logvinenko](http://anton.logvinenko.name/). Modified to symfony from yii2 by Macintoshx

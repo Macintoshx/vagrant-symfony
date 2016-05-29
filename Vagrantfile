@@ -17,16 +17,11 @@ end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Every Vagrant virtual environment requires a box to build off of.
-    config.vm.box = "Ubuntu15.10"
+    config.vm.box = "geerlingguy/ubuntu1604" #"ubuntu/xenial64"
 
     # The url from where the 'config.vm.box' box will be fetched if it
     # doesn't already exist on the user's system.
-    config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/wily/current/wily-server-cloudimg-amd64-vagrant-disk1.box"
-	#config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
-
-    # Uncomment this line and remove config.vm.box_url above
-    # if you need to use 32 bit of Ubuntu
-    # config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-i386-vagrant-disk1.box"
+    #config.vm.box_url = "https://cloud-images.ubuntu.com/releases/16.04/release/ubuntu-16.04-server-cloudimg-amd64-vagrant.box"
 
     # Create a private network, which allows host-only access to the machine
     # using a specific IP.
@@ -52,10 +47,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #
     config.vm.provider "virtualbox" do |vb|
         # Don't boot with headless mode
-        # vb.gui = true
+        #vb.gui = true
+		vb.name = "ubuntu1604"
         # Use VBoxManage to customize the VM. For example to change memory:
         vb.customize ["modifyvm", :id, "--memory", "1024"]
-        vb.customize ["modifyvm", :id, "--name", "TryYii2InTouch"]
+        vb.customize ["modifyvm", :id, "--name", "Symfony3"]
         vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
         vb.customize ["modifyvm", :id, "--cpuexecutioncap", "90"]
         # By default set to 1, change it to amount of your CPUs
@@ -70,8 +66,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.hostmanager.manage_host = true
     config.hostmanager.ignore_private_ip = false
     config.hostmanager.include_offline = true
-    config.hostmanager.aliases =  ["yii2.local","admin.yii2.local","phpmyadmin.yii2.local","adminer.yii2.local","media.yii2.local"]
-
+    config.hostmanager.aliases =  ["symfony.dev","pma.symfony.dev"]
+	
+	
+	
     if Vagrant.has_plugin?("vagrant-cachier")
         config.cache.scope = :box
     end
