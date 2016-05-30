@@ -36,8 +36,8 @@ additional Vagrant modules will be installed automatically (vagrant-hostmanager,
 #### Note for Windows OS users
 
 * Windows Firewall or any Antivirus software can cause some blocks on Vagrant start process. First of all to 'hosts' file modification. Be sure you turned them off (temporary) or set them up properly.
-* In case you get `default: warning: connection refused. Retying...` messages and Vagrant never boot successfully - it seems to be a VirtualBox issue. Try to install some older VBox version. It is tested to work on Virtual Box 4.3.6.  
-* On Windows 8 some issues are reported due to `Hyper-V` enabled. You should disable it if you experience issues with VirtualBox machines.
+* In case you get `default: warning: connection refused. Retying...` messages and Vagrant never boot successfully - it seems to be a VirtualBox issue. Try to install some older VBox version. It is tested to work on Virtual Box 5.0.20.  
+* On Windows 8/8.1/10 some issues are reported due to `Hyper-V` enabled. You should disable it if you experience issues with VirtualBox machines.
 * use Git Bash if possible to make `vagrant ssh` working out of the box.
 
 ### PLAY
