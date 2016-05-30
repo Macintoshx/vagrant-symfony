@@ -6,10 +6,11 @@
   shell: chmod a+x /usr/local/bin/symfony
   become: yes
   
-- name: Create project
-  shell: symfony new {{ SymfonyProjectName }}
-  args:
-    chdir: /var/www
-    creates: /var/www/{{ SymfonyProjectName }}
-  become: yes
+  
+#- name: Create project
+#  shell: symfony new {{ SymfonyProjectName }}
+#  args:
+#    chdir: /var/www
+#    creates: /var/www/{{ SymfonyProjectName }}
+#  become: yes
 

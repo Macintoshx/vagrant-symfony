@@ -71,3 +71,15 @@
 - name: chown PHP-FPM sessions dir
   shell: chown vagrant:vagrant /var/lib/php -Rf
   tags: php
+
+- name: download PhpUnit
+  shell: wget https://phar.phpunit.de/phpunit.phar -P /usr/local/bin
+  become: true
+
+- name: rename PhpUnit
+  shell: mv /usr/local/bin/phpunit.phar /usr/local/bin/phpunit
+  become: true
+
+- name: chmod for PhpUnit
+  shell: chmod +x /usr/local/bin/phpunit
+  become: true
