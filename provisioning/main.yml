@@ -1,6 +1,6 @@
 ---
 - hosts: vagrant
-  sudo: true
+  become: true
   vars:
     - SymfonyProjectName: myproject
     # [OPTIONAL] GitHub OAuth token to extend API rate limit

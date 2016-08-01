@@ -35,6 +35,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # If true, then any SSH connections made will enable agent forwarding.
     # Default value: false
     # config.ssh.forward_agent = true
+	config.ssh.username = "vagrant"
+	config.ssh.password = "vagrant"
 
     # Share an additional folder to the guest VM. The first argument is
     # the path on the host to the actual folder. The second argument is
@@ -48,10 +50,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provider "virtualbox" do |vb|
         # Don't boot with headless mode
         #vb.gui = true
-		vb.name = "ubuntu1604123"
+		vb.name = "ubuntu1404symfony"
         # Use VBoxManage to customize the VM. For example to change memory:
-        vb.customize ["modifyvm", :id, "--memory", "1024"]
-        vb.customize ["modifyvm", :id, "--name", "Symfony3abc"]
+        vb.customize ["modifyvm", :id, "--memory", "768"]
+        vb.customize ["modifyvm", :id, "--name", "Symfony2.8"]
         vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
         vb.customize ["modifyvm", :id, "--cpuexecutioncap", "90"]
         # By default set to 1, change it to amount of your CPUs
