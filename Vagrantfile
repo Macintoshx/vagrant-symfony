@@ -51,7 +51,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		vb.name = "ubuntu1604"
         # Use VBoxManage to customize the VM. For example to change memory:
         vb.customize ["modifyvm", :id, "--memory", "1024"]
-        vb.customize ["modifyvm", :id, "--name", "Symfony3"]
+        vb.customize ["modifyvm", :id, "--name", "SymfonyVagrant"]
         vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
         vb.customize ["modifyvm", :id, "--cpuexecutioncap", "90"]
         # By default set to 1, change it to amount of your CPUs
@@ -66,7 +66,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.hostmanager.manage_host = true
     config.hostmanager.ignore_private_ip = false
     config.hostmanager.include_offline = true
-    config.hostmanager.aliases =  ["symfony.dev","pma.symfony.dev"]
+    config.hostmanager.aliases =  ["symfony.dev","phpmyadmin.dev"]
 	
 	
 	
@@ -81,7 +81,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     $script = <<SCRIPT
         sudo apt-add-repository ppa:ansible/ansible -y
         sudo apt-get update -y
-		sudo apt-get upgrade -y
 		sudo apt-get autoremove -y
 		sudo apt-get autoclean -y
         sudo apt-get install ansible -y

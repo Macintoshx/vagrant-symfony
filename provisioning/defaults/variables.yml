@@ -11,5 +11,5 @@ mysql_key_buffer: 64M
 vhosts:
   [
     { name: 'symfony.dev', rootFolder: '/var/www/{{ SymfonyProjectName }}/web'},
-    { name: 'pma.symfony.dev', rootFolder: '/usr/share/phpmyadmin'}
+    { name: 'phpmyadmin.dev', rootFolder: '/usr/share/phpmyadmin'}
   ]
