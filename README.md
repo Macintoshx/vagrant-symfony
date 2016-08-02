@@ -2,8 +2,8 @@
 
 ## Out of the box...
 
-* Ubuntu 16.04 64 bit ( + bulk of system soft like `mc`, `curl`, etc.)
-* PHP 7.0 ( + modules `intl`, `gd`, `xdebug` etc.)
+* Ubuntu 15.10 64 bit ( + bulk of system soft like `mc`, `curl`, etc.)
+* PHP 5.6 ( + modules `intl`, `gd`, `xdebug` etc.)
 * Nginx
 * MySQL
 * Composer
@@ -11,6 +11,7 @@
 * PostgreSQL
 * Sqlite
 * Memcached
+* Symfony installer
 * Local IP loop on Host machine `/etc/hosts` and Virtual hosts in Nginx already set up too !
 
 ## Quick start
@@ -45,7 +46,7 @@ additional Vagrant modules will be installed automatically (vagrant-hostmanager,
 Ok, now if everything went fine you can access these Urls in your browser
 
 * [http://symfony.dev/](http://symfony.dev/)  -  frontend app
-* [http://pma.symfony.dev/](http://pma.symfony.dev/) - phpMyAdmin
+* [http://phpmyadmin.dev/](http://phpmyadmin.dev/) - phpMyAdmin
 
 **Note :** These local domains `.dev` will be available on your host machine only if `hosts` file was modified correctly. It should 
 be done automatically by `vagrant-hostsmanager` plugin. But if url `http://symfony.dev/` or other is not found by your browser - make sure
@@ -53,7 +54,7 @@ your `hosts` file contain correct assignment of VM IP and local domains:
 It should have such lines :
 ```
 192.168.33.33 symfony.dev
-192.168.33.33 pma.symfony.dev
+192.168.33.33 phpmyadmin.dev
 ```
 
 > File location. On Linux `/etc/hosts`. On Windows `%SystemRoot%\system32\drivers\etc\hosts`

@@ -17,7 +17,7 @@ end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Every Vagrant virtual environment requires a box to build off of.
-    config.vm.box = "ubuntu/trusty64" #"geerlingguy/ubuntu1604" #"ubuntu/xenial64"
+    config.vm.box = "ubuntu/wily64"
 
     # The url from where the 'config.vm.box' box will be fetched if it
     # doesn't already exist on the user's system.
@@ -52,7 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         #vb.gui = true
 		vb.name = "ubuntu1404symfony"
         # Use VBoxManage to customize the VM. For example to change memory:
-        vb.customize ["modifyvm", :id, "--memory", "768"]
+        vb.customize ["modifyvm", :id, "--memory", "1024"]
         vb.customize ["modifyvm", :id, "--name", "Symfony2.8"]
         vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
         vb.customize ["modifyvm", :id, "--cpuexecutioncap", "90"]
@@ -68,7 +68,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.hostmanager.manage_host = true
     config.hostmanager.ignore_private_ip = false
     config.hostmanager.include_offline = true
-    config.hostmanager.aliases =  ["symfony.dev","pma.symfony.dev"]
+    config.hostmanager.aliases =  ["symfony.dev","phpmyadmin.dev"]
 	
 	
 	
@@ -85,6 +85,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         sudo apt-get update -y
 		sudo apt-get autoremove -y
 		sudo apt-get autoclean -y
+		sudo fallocate -l 512M /swapfile
+		sudo chmod 600 /swapfile
+		sudo mkswap /swapfile
+		sudo swapon /swapfile
+		sudo echo '/swapfile none swap defaults 0 0' >> /etc/fstab
         sudo apt-get install ansible -y
 SCRIPT
 

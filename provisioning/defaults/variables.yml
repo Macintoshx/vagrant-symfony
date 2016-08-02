@@ -11,5 +11,5 @@ mysql_key_buffer: 64M
 vhosts:
   [
     { name: 'symfony.dev', rootFolder: '/var/www/{{ SymfonyProjectName }}/web'},
-    { name: 'phpmyadmin.dev', rootFolder: '/usr/share/phpmyadmin'}
+    { name: 'phpmyadmin.dev', rootFolder: '/usr/share/phpmyadmin'} # do not change domain name. 
   ]

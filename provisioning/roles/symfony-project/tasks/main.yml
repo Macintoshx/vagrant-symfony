@@ -11,5 +11,11 @@
   args:
     chdir: /var/www
     creates: /var/www/{{ SymfonyProjectName }}
-  become: yes
+  become: yes  
+#
+#   Przekopiowac do myproject/web by nie bylo sprawdzania IP  
+#- name: overwrite app_dev.php
+#  copy: src=templates/app_dev.php dest=/var/www/{{ SymfonyProjectName }}/web/app_dev.php
+#  become: yes
 
+ 
